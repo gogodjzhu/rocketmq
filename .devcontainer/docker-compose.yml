@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+
+  devcontainer:
+    image: mcr.microsoft.com/devcontainers/java:8-bookworm
+    container_name: devcontainer_rocketmq
+    tmpfs:
+      - /data/namesrv:rw,size=100M
+      - /data/broker-a-0:rw,size=100M
+      - /data/broker-a-1:rw,size=100M
+    volumes:
+      - ..:/workspaces/rocketmq:cached
+    command: sleep infinity
+    environment:
+      - TZ=Asia/Shanghai
+    network_mode: host
