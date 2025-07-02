@@ -4,6 +4,22 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+    // mvn -Dmaven.test.skip=true -Dcheckstyle.skip=true clean package install
+
+    {
+      "type": "java",
+      "name": "MQAdmin:listTools",
+      "request": "launch",
+      "mainClass": "org.apache.rocketmq.tools.command.MQAdminStartup",
+      "projectName": "rocketmq-tools",
+      "args": [
+      ],
+      "vmArgs": "-Duser.home=/workspaces/rocketmq/develop/mqadmin",
+      "env": {
+        "ROCKETMQ_HOME": "/workspaces/rocketmq/develop/mqadmin"
+      }
+    },
+
     // Start the Name Server
     {
       "type": "java",
@@ -112,6 +128,25 @@
     },
     {
       "type": "java",
+      "name": "MQAdmin:topicRoute",
+      "request": "launch",
+      "mainClass": "org.apache.rocketmq.tools.command.MQAdminStartup",
+      "projectName": "rocketmq-tools",
+      "args": [
+        "topicRoute",
+        "-n",
+        "127.0.0.1:9876",
+        "--topic",
+        "TopicTest"
+      ],
+      "vmArgs": "-Duser.home=/workspaces/rocketmq/develop/mqadmin",
+      "env": {
+        "ROCKETMQ_HOME": "/workspaces/rocketmq/develop/mqadmin"
+      }
+    },
+    // Producer
+    {
+      "type": "java",
       "name": "quickstart:Producer",
       "request": "launch",
       "mainClass": "org.apache.rocketmq.example.quickstart.Producer",
@@ -121,6 +156,7 @@
         "ROCKETMQ_HOME": "/workspaces/rocketmq/develop/producer"
       }
     },
+    // Consumer
     {
       "type": "java",
       "name": "quickstart:Consumer",
